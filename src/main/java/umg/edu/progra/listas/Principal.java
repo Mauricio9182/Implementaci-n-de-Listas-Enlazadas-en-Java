@@ -1,54 +1,80 @@
 package umg.edu.progra.listas;
 
+import umg.edu.progra.listas.doblementeEnlazada.DoblementeEnlazada;
+
 /**
  *
  * @author Walter Cordova
  */
 public class Principal {
-
     public static void main(String[] args) {
 
-        Lista lista = new Lista();
-        lista.insertarCabezaLista(1);
-        lista.insertarCabezaLista(2);
-        lista.insertarCabezaLista(3);
-        lista.insertarCabezaLista(4);
-        lista.insertarCabezaLista(5);
-        lista.insertarCabezaLista(6);
-
-        lista.visualizar();
+        //creamos la lista doblemente enlazada
+        DoblementeEnlazada lista = new DoblementeEnlazada();
 
 
+        lista.insertAtEnd(10);
+        lista.insertAtEnd(20);
+        lista.insertAtEnd(30);
+        lista.insertAtEnd(40);
+        lista.insertAtEnd(50);
+
+        // Mostrar la lista original
+        System.out.println("Lista original:");
+        lista.displayForward();
+
+        // Contar el número de nodos en la lista
+        System.out.println("\nNúmero de nodos en la lista: " + lista.countNodes());
+
+        // Insertar un nodo después de un valor específico
+        System.out.println("\nInsertando 25 después del 20:");
+        lista.insertAfter(20, 25);
+        lista.displayForward();
+
+        // Revertir la lista
+        System.out.println("\nRevirtiendo la lista:");
+        lista.reverse();
+        lista.displayForward();
+
+
+
+        Lista listaOriginal = new Lista();
+        listaOriginal.insertarCabezaLista(1);
+        listaOriginal.insertarCabezaLista(2);
+        listaOriginal.insertarCabezaLista(3);
+        listaOriginal.insertarCabezaLista(4);
+        listaOriginal.insertarCabezaLista(5);
+        listaOriginal.insertarCabezaLista(6);
+
+        listaOriginal.visualizar();
         System.out.println("\n");
-        System.out.println("primero: " + lista.leerPrimero());
 
+        // Mostrar el primer valor de la lista
+        System.out.println("Primero: " + listaOriginal.leerPrimero());
 
-
-        lista.eliminar(3);
-        System.out.println("lista: " + lista);
-
+        // Eliminar el valor 3
+        listaOriginal.eliminar(3);
+        System.out.println("Lista después de eliminar el 3:");
+        listaOriginal.visualizar();
         System.out.println("\n");
 
-        Nodo dato = lista.buscarLista(4);
-        System.out.println("dato: " + dato);
+        // Buscar un valor y luego insertar uno nuevo después
+        Nodo dato = listaOriginal.buscarLista(4);
+        System.out.println("Nodo encontrado: " + dato);
+        listaOriginal.insertarLista(dato, 10);
+        listaOriginal.visualizar();
 
-        lista.insertarLista(dato, 10);
-        System.out.println("lista " + lista);
+        dato = listaOriginal.buscarLista(5);
+        System.out.println("Nodo encontrado: " + dato);
+        listaOriginal.insertarLista(dato, 600);
+        listaOriginal.visualizar();
 
-        dato = lista.buscarLista(5);
-        System.out.println("dato " + dato);
-        lista.insertarLista(dato, 600);
-
-        System.out.println("lista " + lista);
-
-        lista.visualizar();
-
-        // Ordenar la lista con el método de burbuja
+        // Ordenar la lista
         System.out.println("\nLista ordenada:");
-        lista.ordenarBurbuja();
-        lista.visualizar();
+        listaOriginal.ordenarBurbuja();
+        listaOriginal.visualizar();
 
-        // Crear segunda lista para unir
+        // Crear y unir una segunda lista
         Lista lista2 = new Lista();
         lista2.insertarCabezaLista(7);
         lista2.insertarCabezaLista(8);
@@ -57,16 +83,14 @@ public class Principal {
         System.out.println("\nLista 2 antes de unir:");
         lista2.visualizar();
 
-        // Unir listas
-        lista.unirLista(lista2);
-
+        listaOriginal.unirLista(lista2);
         System.out.println("\nLista unida:");
-        lista.visualizar();
+        listaOriginal.visualizar();
 
-// Separar en listas de pares e impares
+        // Separar la lista en pares e impares
         Lista listaPares = new Lista();
         Lista listaImpares = new Lista();
-        lista.separarParesImpares(listaPares, listaImpares);
+        listaOriginal.separarParesImpares(listaPares, listaImpares);
 
         System.out.println("\nLista de números pares:");
         listaPares.visualizar();
@@ -74,26 +98,20 @@ public class Principal {
         System.out.println("\nLista de números impares:");
         listaImpares.visualizar();
 
-        lista.invertirLista();
+        // Invertir la lista
+        listaOriginal.invertirLista();
         System.out.println("\nLista invertida:");
-        lista.visualizar();
+        listaOriginal.visualizar();
 
-        System.out.println("\nElemento en la posición 2 desde el final: " + lista.obtenerDesdeFinal(2));
+        // Obtener el elemento desde el final
+        System.out.println("\nElemento en la posición 2 desde el final: " + listaOriginal.obtenerDesdeFinal(2));
 
-        lista.eliminarDuplicados();
+        // Eliminar duplicados
+        listaOriginal.eliminarDuplicados();
         System.out.println("\nLista sin duplicados:");
-        lista.visualizar();
+        listaOriginal.visualizar();
 
-        System.out.println("\nTamaño de la lista: " + lista.obtenerTamaño());
-
-        /**
-		 * Resolver lo que se solicita a continuacion
-         * Ejercicio 1: Ordernar la lista de forma ascendente
-         * Ejercicio 2: Unir dos listas enlazadas
-         * Ejercicio 3: Separa numeros pares e impares en dos listas enlazadas diferentes
-         */
-
-
+        // Mostrar el tamaño de la lista
+        System.out.println("\nTamaño de la lista: " + listaOriginal.obtenerTamaño());
     }
-
 }

@@ -4,7 +4,7 @@ package umg.edu.progra.listas;
  *
  * @author Walter Cordova
  */
-public class Lista {
+public class    Lista {
 
     private Nodo primero;
 
